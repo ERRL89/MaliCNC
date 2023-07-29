@@ -2,23 +2,20 @@
   
 <head>
 <script>
-function calcula(operacion){
-var operando1 = DOM.calc.operando1.value
-var operando2 = DOM.calc.operando2.value
-var result = eval(operando1 + operacion + operando2)
-DOM.calc.resultado.value = result}
+function obtener_presupuesto(){
+var anchopieza1 = DOM.presupuesto.ancho_pieza1.value
+var largopieza1 = DOM.presupuesto.largo_pieza1.value
+var result= anchopieza1*largopieza1
+DOM.presupuesto.resultado.value = result}
 </script>
 </head>
 
 <body>  
-<form name="calc">
-<input type="Text" name="operando1" value="0" size="12"><br>
-<input type="Text" name="operando2" value="0" size="12"><br><br>
-  
-<input type="Button" name="mas" value="+" onclick="calcula('+')">
-<input type="Button" name="menos" value="-" onclick="calcula('-')">
-<input type="Button" name="por" value="x" onclick="calcula('*')">
-<input type="Button" name="divide" value="/" onclick="calcula('/')">
+<form name="presupuesto">
+<input type="Text" name="ancho_pieza1" value="0" size="12"><br>
+<input type="Text" name="largo_pieza1" value="0" size="12"><br><br>
+
+<input type="Button" name="calcular" value="/" onclick="obtener_presupuesto()">
 <br><br>
 <input type="Text" name="resultado" value="0" size="12">
 </form>
