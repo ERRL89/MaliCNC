@@ -2,12 +2,18 @@
 <head>
   <script>
 function calcula(operacion){
-    var operando1 = document.calc.operando1.value
-    var operando2 = document.calc.operando2.value 
-    var result = eval(operando1 + operacion + operando2)
-    document.calc.resultado.value = result
+var operando1 = document.calc.operando1.value
+var operando2 = document.calc.operando2.value
+var result = eval(operando1 + operacion + operando2)
+document.calc.resultado.value = result
 }
-</script> 
+function margen(operacion){
+var operando1 = document.calc.operando1.value
+var operando2 = document.calc.operando2.value
+var result = eval(operando1 + operacion + (1-(operando2/100)))
+document.calc.resultado.value = result
+}
+</script>
 </head>
 <body>
   
@@ -16,10 +22,11 @@ function calcula(operacion){
 <br>
 <input type="Text" name="operando2" value="0" size="12">
 <br>
-<input type="Button" name="" value=" + " onclick="calcula('+')">
-<input type="Button" name="" value=" - " onclick="calcula('-')">
-<input type="Button" name="" value=" X " onclick="calcula('*')">
-<input type="Button" name="" value=" / " onclick="calcula('/')">
+<input type="Button" name="mas" value=" + " onclick="calcula('+')">
+<input type="Button" name="menos" value=" - " onclick="calcula('-')">
+<input type="Button" name="por" value=" X " onclick="calcula('*')">
+<input type="Button" name="divide" value=" / " onclick="calcula('/')">
+<input type="Button" name="margen" value="MCOM " onclick="margen('/')">
 <br>
 <input type="Text" name="resultado" value="0" size="12">
 </form>
