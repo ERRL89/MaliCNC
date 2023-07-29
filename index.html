@@ -7,12 +7,6 @@ var operando1 = document.calc.operando1.value
 var operando2 = document.calc.operando2.value
 var result = eval(operando1 + operacion + operando2)
 document.calc.resultado.value = result}
-  
-function margen(operacion){
-var operando1 = document.calc.operando1.value
-var operando2 = document.calc.operando2.value
-var result = eval(operando1 + operacion + operando2)
-document.calc.resultado.value = result}
 </script>
 </head>
 
@@ -23,7 +17,7 @@ document.calc.resultado.value = result}
   
 <input type="Button" name="mas" value="+" onclick="calcula('+')">
 <input type="Button" name="menos" value="-" onclick="calcula('-')">
-<input type="Button" name="por" value="*" onclick="calcula('*')">
+<input type="Button" name="por" value="x" onclick="calcula('*')">
 <input type="Button" name="divide" value="/" onclick="calcula('/')">
 <br>
 <input type="Text" name="resultado" value="0" size="12">
