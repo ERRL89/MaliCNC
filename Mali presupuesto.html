@@ -1,0 +1,252 @@
+<html>
+
+<head>
+<link rel="stylesheet" href="styles.css" />
+<script>
+
+let i=1
+var total_acumulado=0
+var ok1=0
+var ok2=0
+
+let identificadorTiempoDeEspera;
+
+const costo_acumulado=[]
+
+function ver_precio() {
+   var seleccion_material = document.presupuesto.sel_materiales;
+   var valor_hoja = seleccion_material.options[seleccion_material.selectedIndex].value;
+   document.presupuesto.preciohoja.value=valor_hoja
+}
+
+function precio_transporte() {
+   var seleccion_transporte = document.presupuesto.sel_transporte;
+   let valor_transporte = seleccion_transporte.options[seleccion_transporte.selectedIndex].value;
+   document.presupuesto.preciotransporte.value=valor_transporte
+}
+
+function obtener_presupuesto(){
+   
+   if(document.presupuesto.ancho_pieza1.value>0 & document.presupuesto.largo_pieza1.value>0)
+   {
+      if(ok1==0)
+      {
+        var seleccion_material = document.presupuesto.sel_materiales;
+        var valor_hoja = seleccion_material.options[seleccion_material.selectedIndex].value;
+
+        var ancho_pieza1 = parseFloat(document.presupuesto.ancho_pieza1.value)
+        var largo_pieza1 = parseFloat(document.presupuesto.largo_pieza1.value)
+        var area_pieza= ancho_pieza1*largo_pieza1
+
+        const area_hoja=29768
+        var costo_pieza=((area_pieza*valor_hoja)/area_hoja)*1.25
+        var piezas_hoja= area_hoja/area_pieza
+
+        document.presupuesto.areapieza.value = area_pieza
+        document.presupuesto.preciopieza.value =costo_pieza.toFixed(2)
+        document.presupuesto.piezasporhoja.value = Math.floor(piezas_hoja-1)
+   
+        let cambiar_class_colum1 = document.getElementById("columna1");
+        cambiar_class_colum1.className = "columna1-ok";
+   
+        total_acumulado=Number(costo_pieza.toFixed(2))
+        document.getElementById("total").value=total_acumulado
+
+        ok1=1
+      }
+      else alert("Si desea recalcular seleccione *Limpiar todo*")
+}
+else alert("Introduce los valores solicitados")
+}
+
+function obtener_presupuesto2(){
+if(document.getElementById("minutos_corte").value>0 & document.getElementById("mano_obra").value>0)
+{
+   if(ok2==0)
+   {
+     var uso_hfresa = document.presupuesto.tipo_fresa;
+     var valor_uso_fresa = uso_hfresa.options[uso_hfresa.selectedIndex].value;
+     var uso__fresa=parseFloat((valor_uso_fresa*document.getElementById("minutos_corte").value)/600)
+     document.getElementById("muso_fresa").value=uso__fresa
+
+     var seleccion_transporte = document.presupuesto.sel_transporte;
+     var valor_transporte = parseFloat(seleccion_transporte.options[seleccion_transporte.selectedIndex].value);
+     var manos_obras=parseFloat(document.getElementById("mano_obra").value)
+     var comisiones_ventas=parseFloat(document.getElementById("comision_venta").value)
+
+     total_acumulado=total_acumulado+comisiones_ventas+manos_obras+uso__fresa+valor_transporte
+     document.getElementById("total").value=total_acumulado
+
+     let cambiar_class_colum3 = document.getElementById("columna3");
+     cambiar_class_colum3.className = "columna3-ok";
+
+     ok2=1
+   }
+   else alert("Si desea recalcular seleccione *Limpiar todo*")
+}
+else alert("Introduce los valores solicitados")
+}
+
+function limpiar_all(){ location.reload(); }
+
+function funcionConRetraso() {
+     cambiar_class_colum5 = document.getElementById("columna5");
+     cambiar_class_colum5.className = "columna5";
+      }
+
+function temporizadorDeRetraso() {
+      identificadorTiempoDeEspera = setTimeout(funcionConRetraso, 100);
+      }
+
+function guardar(){
+
+    var descripcion = document.getElementById("descripcion").value;
+    var cantidad = document.getElementById("cantidad").value;
+    var unidad = document.getElementById("unidad").value;
+    var costo = document.getElementById("costo").value;
+    
+    if(document.getElementById("descripcion").value!="" & document.getElementById("cantidad").value!="" & document.getElementById("unidad").value!="" & document.getElementById("costo").value!="")
+    {
+        var fila="<tr><td id=\"descripcion"+i+"\">"+descripcion+"</td><td id=\"cantidad"+i+"\">"+cantidad+"</td><td id=\"unidad"+i+"\">"+unidad+"</td><td id=\"costo"+i+"\">$"+costo+"</td></tr>";
+      
+        costo_acumulado[i]=Number(costo)
+  
+        var iniciar_tabla = document.createElement("tr");
+        iniciar_tabla.innerHTML=fila;
+
+        document.getElementById("tabla_dinamica").appendChild( iniciar_tabla);
+      
+        total_acumulado=total_acumulado+costo_acumulado[i]
+        document.getElementById("total").value=total_acumulado
+
+        let cambiar_class_colum5 = document.getElementById("columna5");
+        cambiar_class_colum5.className = "columna5-ok";
+        i=i+1
+
+        temporizadorDeRetraso();
+    }
+    else alert("Introduce los valores solicitados")
+  }
+</script>
+</head>
+
+<body>
+
+<H1 class="titulo"><center>MALI/PRESUPUESTO CORTE CNC ROUTER</center></H1>
+<table>
+<tr>
+//-----------------------------------------------------------------------------------------------------------------------------
+<td rowspan=3 id="columna1" class="columna1"><center>
+<form name="presupuesto" >
+<H3>Material</H3>
+  <select class="styled-select" style="text-align:center" name="sel_materiales" onchange="ver_precio();">
+    <option>Seleccione material:</option>
+    <option value="225">MDF_3mm</option>
+    <option value="329">MDF_5.5mm</option>
+    <option value="479">MDF_9mm</option>
+    <option value="535">MDF_12mm</option>
+    <option value="675">MDF_15mm</option>
+    </select><br><br>
+  
+$<input class="entrada" type="number" name="preciohoja" value="0" size="12"  style="text-align:right" disabled><br><br>
+
+<H3>Introduza ancho de pieza a cotizar</H3>
+<input class="entrada" type="number" name="ancho_pieza1" value="0" size="12"  style="text-align:right">cm<br>
+
+<H3>Introduza largo de pieza a cotizar</H3>
+<input class="entrada" type="number" name="largo_pieza1" value="0" size="12"  style="text-align:right">cm<br><br>
+
+<input type="Button" name="calcular" value="Calcular" class="btn_calcular" onclick="obtener_presupuesto();">
+<br><br>
+
+<H3>Área de pieza</H3>
+<input class="entrada" type="number" name="areapieza" value="0" size="12"  style="text-align:right" disabled>cm2
+
+<H3>Costo de MDF por pieza</H3>
+$<input class="entrada" type="number" name="preciopieza" value="0" size="12"  style="text-align:right" disabled>
+
+<H3>Piezas por hoja</H3>
+<input class="entrada" type="number" name="piezasporhoja" value="0" size="12"  style="text-align:right" disabled>
+</center>
+</td>
+
+<td rowspan=3 class="espacio"></td>
+//-----------------------------------------------------------------------------------------------------------------------------
+<td rowspan=3 id="columna3" class="columna3">
+<center>
+  <H3>Minutos de corte</H3>
+  <input class="entrada" type="number" id="minutos_corte" value="0" size="12"  style="text-align:right">
+  <H3>Tipo de fresa</H3>
+  <select class="styled-select" type="number" style="text-align:center" name="tipo_fresa">
+    <option value="0">Seleccione tipo de fresa:</option>
+    <option value="135">1 mm</option>
+    <option value="135">1.5 mm</option>
+    <option value="135">2 mm</option>
+    <option value="146">3.175 mm</option>
+    <option value="280">6 mm</option>
+    </select>
+  <H3>Uso de fresa ($)</H3>
+  <input class="entrada" type="number" id="muso_fresa" value="0" size="12"  style="text-align:right" disabled>
+  <H3>Transporte/Entrega</H3>
+  <select class="styled-select" type="number" style="text-align:center" name="sel_transporte" onchange="precio_transporte();">
+    <option value="0">Seleccione tipo de transporte:</option>
+    <option value="0">No aplica</option>
+    <option value="14">Camión CDMX</option>
+    <option value="24">Camión Edo. Méx.</option>
+    <option value="24">Camión CDMX/Metro</option>
+    </select><br><br>
+  $<input class="entrada" type="number" name="preciotransporte" value="0" size="12"  style="text-align:right" disabled><br>
+  <H3>Mano de obra</H3>
+  $<input class="entrada" type="number" id="mano_obra" value="0" size="12"  style="text-align:right"><br>
+  <H3>Comisión de venta</H3>
+  $<input class="entrada" type="number" id="comision_venta" value="0" size="12"  style="text-align:right"><br><br>
+  
+  <input class="btn_calcular" type="Button" name="calcular2" value="Calcular" onclick="obtener_presupuesto2();"><br><br>
+  <input class="btn_calcular" type="Button" name="limpiar" value="Limpiar todo" onclick="limpiar_all();">
+</center>
+</td>
+
+<td rowspan=3 class="espacio"></td>
+
+<td rowspan=3 id="columna5" class="columna5">
+<center>
+   <H3 class="titulo_mat_ad">Materiales adicionales</H3><br><br><br><br>
+   <H3>Ingrese descripción</H3>
+    <input class="entrada" id="descripcion" type="text" style="text-align:right"><br>
+    <H3>Ingrese cantidad</H3>
+    <input class="entrada" id="cantidad" type="text" style="text-align:right"><br>
+    <H3>Ingrese unidad</H3>
+    <input class="entrada" id="unidad" type="text" style="text-align:right"><br>
+    <H3>Ingrese costo total</H3>
+    $<input class="entrada" id="costo" type="number" style="text-align:right"><br><br><br>
+    <button class="btn_calcular" type="button" id="btn_guardar" onclick="guardar();">Agregar</button><br><br>
+</center>
+</td>
+
+<td rowspan=3 class="espacio"></td>
+
+<td class="columna7">
+  <table class="mat_adicionales">
+    <tr >
+      <td><H3>Descripción</H3></td>
+      <td><H3>Cantidad</H3></td>
+      <td><H3>Unidad</H3></td>
+      <td><H3>Costo</H3></td>
+    </tr>   
+<tbody id="tabla_dinamica">
+
+</tbody>
+</table>
+
+<tr class="espacio"></tr>
+<tr><td class="columna8"><center>
+<h1>TOTAL</h1>
+$<input class="resultado_total" type="number" id="total" value="0" style="text-align:right" disabled><br>
+</center></td></tr>
+
+</td>
+</tr>
+</table>
+</form>
+</body>
+</html> 
