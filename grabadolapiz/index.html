@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="shortcut icon" href="./Imagenes/logocnc.png" type="image/x-icon" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bruno+Ace&family=Kalam:wght@700&display=swap" rel="stylesheet">
+    <script src="./funciones.js"></script>
+</head>
+
+<body>
+    <header>
+        <a href="https://www.facebook.com/MALICNC" target="_blank" class="logo">
+            <img src="./Imagenes/logocnc.png" alt="logo" />
+            <span class="nombre_empresa">
+                MALI CNC - Grabado de lápices y colores con láser
+            </span>
+        </a>
+        <ul class="navegacion">
+            <li>Inicio</li>
+            <li>Productos</li>
+            <li>Contacto</li>
+        </ul>
+    </header>
+    <h1>PERSONALIZA EL GRABADO DE TUS LAPICES</h1>
+    <div class="conteineruno">
+        <img src="./Imagenes/lapiz.png" alt="lapiz" />
+        <input type="text" id="textoenlapiz" width="0" />
+        <div id="imagenenlapiz" class="textoenlapiz">
+            <span id="variable" class="material-icons md-18"></span>
+        </div>
+    </div>
+
+    <div class="conteinerdos">
+        <div class="texto">
+            <span>Ingrese el nombre:</span><br>
+            <input type="text" id="texto_lapiz" /><br><br>
+            <button onclick="agregar()">Agregar</button>
+            <button onclick="limpiar()">Limpiar</button>
+        </div>
+
+        <div class="imagenes_decorativas">
+            <button id="boton1" class="imagen" value="1" onclick="agregar_imagen1()">
+                <span class="material-icons md-24">smart_toy</span>
+            </button>
+            <button id="boton2" class="imagen" value="2" onclick="agregar_imagen2()">
+                <span class="material-icons md-24">mood</span>
+            </button>
+            <button id="boton3" class="imagen" value="3" onclick="agregar_imagen3()">
+                <span class="material-icons md-24">rocket_launch</span>
+            </button>
+            <button id="boton4" class="imagen" value="4" onclick="agregar_imagen4()">
+                <span class="material-icons md-24">star</span>
+            </button>
+            <button id="boton5" class="imagen" value="5" onclick="agregar_imagen5()">
+                <span class="material-icons md-24">pets</span>
+            </button>
+            <button id="boton6" class="imagen" value="6" onclick="agregar_imagen6()">
+                <span class="material-icons md-24">stars</span>
+            </button>
+            <button id="boton7" class="imagen" value="7" onclick="agregar_imagen7()">
+                <span class="material-icons md-24">cruelty_free</span>
+            </button>
+            <button id="boton8" class="imagen" value="8" onclick="agregar_imagen8()">
+                <span class="material-icons md-24">shopping_basket</span>
+            </button>
+            <button id="boton9" class="imagen" value="9" onclick="agregar_imagen9()">
+                <span class="material-icons md-24">sports_esports</span>
+            </button>
+            <button id="boton10" class="imagen" value="10" onclick="agregar_imagen10()">
+                <span class="material-icons md-24">mode_night</span>
+            </button>
+        </div>
+
+        <div class="datos">
+            <select id="sel_letra" style="text-align: center" onchange="tipo_letra();">
+                <option>Seleccione tipo de letra:</option>
+                <option value="Sans Serif">Sans Serif</option>
+                <option value="Calibri">Calibri</option>
+                <option value="Courier New">Courier New</option>
+                <option value="Georgia">Georgia</option>
+                <option value="Times New Roman">Times New Roman</option>
+            </select><br /><br />
+            <span>Ingrese número de lapices o colores a grabar:</span><br />
+            <div class="costo">
+                <input type="number" id="num_lapiz" min="1" pattern="^[0-9]+"/>
+                <input type="text" id="precio_grabado" readonly />      
+            </div>
+            <br /><span>Ingrese número de teléfono <span>(10 digitos):</span></span><br />
+            <input style="text-align: center" type="number" maxlength="10" oninput="if(this.value.length > this.maxLength) this.value = this.value.slice(0, this.maxLength);"/><br /><br />
+            <button class="superboton">GENERE SU PEDIDO</button>
+        </div>
+    </div>
+    <footer>
+        <span>Todos los derechos reservados 2023 |<span class="edson"> Sitio desarrollado por Edson Rubio
+                ©</span></span>
+    </footer>
+</body>
+
+</html>
