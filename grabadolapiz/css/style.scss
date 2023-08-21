@@ -1,0 +1,369 @@
+*{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+body {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+    background: rgb(63, 94, 251);
+    background: radial-gradient(circle, rgba(63, 94, 251, 1) 0%, rgba(252, 70, 107, 0.8919540229885058) 100%);
+    font-weight: 600;
+    text-align: center;
+
+    h1 {
+        color: white;
+        font-family: 'Kalam', cursive;
+        margin-top: 15px;
+        margin-bottom: 15px;
+    }
+}
+
+.material-icons {
+    font-family: "Material Icons";
+    font-weight: normal;
+    font-style: normal;
+    font-size: 36px;
+    /* Preferred icon size */
+    display: inline-block;
+    line-height: 1;
+    text-transform: none;
+    letter-spacing: normal;
+    word-wrap: normal;
+    white-space: nowrap;
+    direction: ltr;
+
+    /* Support for all WebKit browsers. */
+    -webkit-font-smoothing: antialiased;
+    /* Support for Safari and Chrome. */
+    text-rendering: optimizeLegibility;
+
+    /* Support for Firefox. */
+    -moz-osx-font-smoothing: grayscale;
+
+    /* Support for IE. */
+    font-feature-settings: "liga";
+}
+
+.material-icons.md-18 {
+    font-size: 18px;
+}
+
+.material-icons.md-24 {
+    font-size: 24px;
+}
+
+.material-icons.md-36 {
+    font-size: 36px;
+}
+
+.material-icons.md-48 {
+    font-size: 48px;
+}
+
+header {
+    background-color: black;
+    min-height: 75px;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 3px 3px 20px black;
+    ;
+
+    ul {
+        color: white;
+        font-family: 'Bruno Ace', cursive;
+        list-style-type: none;
+        display: flex;
+        gap: 25px;
+        margin-right: 10px;
+
+        li:hover {
+            cursor: pointer;
+            transition: 0.5s;
+            color: rgba(35, 157, 215, 1);
+            border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+           
+        }
+    }
+}
+
+header a {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    transition: 0.5s;
+}
+
+.logo img {
+    width: 50px;
+    height: 50px;
+    margin: 10px;
+    transition: 0.3s ease-in-out;
+
+    &:hover {
+        transform: translateY(-3px);
+    }
+}
+
+.logo span {
+    font-size: 18px;
+    font-family: 'Bruno Ace', cursive;
+    text-decoration: none;
+    color: white;
+
+    &:hover {
+        color: rgba(35, 157, 215, 1);
+        transition: 0.5s;
+    }
+}
+
+.conteineruno {
+    display: flex;
+    position: relative;
+    margin-top: 5px;
+    height: 30px;
+    width: 510px;
+        img {
+            position: relative;  
+        }
+
+        input {
+            position: absolute;
+            z-index: 1000;
+            height: 22px;
+            width: 210px;
+            margin-left: 60px;
+            margin-top: 3px;
+            background: none;
+            outline: hidden;
+            font-weight: 600;
+            color: black;
+            border: 0;
+        }
+
+        .textoenlapiz {
+            position: absolute;
+            margin-left: 270px;
+            height: 18px;
+            width: 18px;
+            height: auto;
+            margin-top: 4px;
+        }
+    }
+
+.conteinerdos {
+    width: 500px;
+    margin: 10px 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: start;
+    align-items: center;
+    gap: 10px;
+    margin-top: -20px;
+
+    .texto {
+        margin-top: 25px;
+        color: white;
+        font-size: 18px;
+
+        input {
+            margin-top: 10px;
+            width: 380px;
+            height: 25px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+
+            &:focus {
+                outline: 2px solid rgb(165, 22, 179);
+            }
+        }
+
+        button {
+            background: rgb(41, 63, 148);
+            background: linear-gradient(219deg,
+                    rgba(41, 63, 148, 1) 0%,
+                    rgba(41, 63, 148, 1) 32%,
+                    rgba(39, 88, 166, 1) 53%,
+                    rgba(37, 118, 187, 1) 81%,
+                    rgba(35, 151, 211, 1) 100%,
+                    rgba(35, 157, 215, 1) 100%,
+                    rgba(168, 200, 215, 0.44861694677871145) 100%);
+
+            color: white;
+            font-family: 'Kalam', cursive;
+            height: 40px;
+            width: 150px;
+            border-radius: 10px;
+            border: none;
+            font-size: 15px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease-in-out;
+
+            &:hover {
+                background: #239dd7;
+                transform: translateY(-3px);
+            }
+        }
+    }
+
+    .imagenes_decorativas {
+        padding: 10px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 30px;
+        width: 400px;
+
+        button {
+            height: 50px;
+            width: 50px;
+        }
+
+        .imagen {
+            border: 2px solid rgb(41, 63, 148);
+            color: black;
+            border-radius: 50%;
+            color: rgb(41, 63, 148);
+            background: white;
+            border: none;
+            transition: transform 0.3s ease-in-out;
+
+            &:hover {
+                color: rgb(33, 149, 209);
+                transform: translateY(-3px);
+            }
+        }
+    }
+
+    .datos {
+        padding: 5px;
+        text-align: center;
+
+        select {
+            width: 310px;
+            height: 25px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+
+            &:focus {
+                outline: 2px solid rgb(165, 22, 179);
+            }
+
+        }
+
+        .costo {
+            input {
+                width: 150px;
+                height: 25px;
+                text-align: center;
+                border-radius: 5px;
+                border: none;
+                margin-top: 5px;
+
+                &:focus {
+                    outline: 2px solid rgb(165, 22, 179);
+                }
+            }
+        }
+
+        input {
+            width: 310px;
+            height: 25px;
+            text-align: center;
+            border-radius: 5px;
+            border: none;
+            margin-top: 5px;
+
+            &:focus {
+                outline: 2px solid rgb(165, 22, 179);
+            }
+        }
+
+        span {
+            color: white;
+        }
+
+        button {
+            font-family: 'Kalam', cursive;
+            height: 50px;
+            width: 380px;
+            border-radius: 15px;
+            background: rgb(41, 63, 148);
+            background: linear-gradient(219deg,
+                    rgba(41, 63, 148, 1) 0%,
+                    rgba(41, 63, 148, 1) 32%,
+                    rgba(39, 88, 166, 1) 53%,
+                    rgba(37, 118, 187, 1) 81%,
+                    rgba(35, 151, 211, 1) 100%,
+                    rgba(35, 157, 215, 1) 100%,
+                    rgba(168, 200, 215, 0.44861694677871145) 100%);
+
+            color: white;
+            font-weight: 600;
+            font-size: 22px;
+            border: 1px solid rgba(255, 255, 255, 0.2);
+            transition: transform 0.3s ease-in-out;
+            box-shadow: 3px 3px 20px white;
+
+            &:hover {
+                background: #239dd7;
+                transform: translateY(-3px);
+            }
+        }
+    }
+}
+
+footer {
+    span {
+
+        padding-top: 10px;
+        font-size: 13px;
+        margin-top: 30px;
+
+        .edson {
+            color: white;
+        }
+    }
+}
+
+@media (max-width: 550px) {
+
+    body h1 {
+        font-size: 20px;
+    }
+
+    header {
+        width: 100%;
+        flex-direction: column;
+        height: 100px;
+
+        span {
+            font-size: 10px;
+            margin-left: -60px;
+            margin-right: 5px;
+        }
+
+        .navegacion {
+            border-top: 1px solid white;
+            padding-bottom: 10px;
+           
+
+            li {
+                padding-top: 10px;
+                font-size: 13px;
+
+            }
+        }
+    }
+
+    .logo img {
+        visibility: hidden;
+    }
+}
